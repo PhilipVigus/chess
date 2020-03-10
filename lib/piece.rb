@@ -1,6 +1,6 @@
 class Piece
   attr_reader :colour
-  def initialize
-    @colour = "black"
+  def initialize(colour)
+    @colour = colour
   end
 end
