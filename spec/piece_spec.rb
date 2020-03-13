@@ -14,6 +14,7 @@ describe Piece do
   it "is a certain type (pawn, knight, rook, queen etc)" do
     piece = Piece.new("white", "pawn")
     expect(piece.type).to eq("pawn")
+    
     piece = Piece.new("white", "queen")
     expect(piece.type).to eq("queen")
   end
