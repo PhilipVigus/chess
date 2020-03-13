@@ -13,7 +13,7 @@ describe Board do
 
   context 'adding pieces' do
     it 'you can add a piece to a square on the board' do
-      piece = Piece.new("black", "pawn")
+      piece = Piece.new(Piece::BLACK, Piece::PAWN)
       board.add_piece(piece, 0, 0)
 
       expect(board.spaces[0][0]).to eq(piece)
