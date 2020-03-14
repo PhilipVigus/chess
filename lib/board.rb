@@ -1,4 +1,4 @@
-require_relative('./coord.rb')
+require_relative('./space.rb')
 
 class Board
   attr_reader :spaces
@@ -7,11 +7,11 @@ class Board
     @spaces = Array.new(8) { Array.new(8) }
   end
 
-  def add_piece(piece, coord)
-    @spaces[coord.row][coord.column] = piece
+  def add_piece(piece, space)
+    @spaces[space.row][space.column] = piece
   end
 
-  def empty_space?(coord)
-    @spaces[coord.row][coord.column].nil?
+  def empty_space?(space)
+    @spaces[space.row][space.column].nil?
   end
 end

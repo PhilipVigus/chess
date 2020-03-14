@@ -1,6 +1,6 @@
 require 'board'
 require 'piece'
-require 'coord'
+require 'space'
 
 describe Board do
   let(:board) { Board.new }
@@ -15,19 +15,19 @@ describe Board do
   context 'adding pieces' do
     it 'you can add a piece to a square on the board' do
       piece = Piece.new(Piece::BLACK, Piece::PAWN)
-      board.add_piece(piece, Coord.new(0, 0))
+      board.add_piece(piece, Space.new(0, 0))
 
       expect(board.spaces[0][0]).to eq(piece)
     end
   end
 
   it 'tells you whether a space is empty' do
-    occupied_coord = Coord.new(0, 0)
-    empty_coord = Coord.new(1, 0)
+    occupied_space = Space.new(0, 0)
+    empty_space = Space.new(1, 0)
     piece = Piece.new(Piece::BLACK, Piece::PAWN)
-    board.add_piece(piece, occupied_coord)
+    board.add_piece(piece, occupied_space)
 
-    expect(board.empty_space?(occupied_coord)).to eq(false)
-    expect(board.empty_space?(empty_coord)).to eq(true)
+    expect(board.empty_space?(occupied_space)).to eq(false)
+    expect(board.empty_space?(empty_space)).to eq(true)
   end
 end
