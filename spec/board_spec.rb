@@ -36,4 +36,8 @@ describe Board do
 
     expect(board.piece_at(space)).to eq(piece)
   end
+
+  it 'returns nil if the specified square is empty' do
+    expect(board.piece_at(Space.new(0, 0))).to eq(nil)
+  end
 end
