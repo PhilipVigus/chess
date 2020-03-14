@@ -10,4 +10,8 @@ class Board
   def add_piece(piece, coord)
     @spaces[coord.row][coord.column] = piece
   end
+
+  def empty_space?(coord)
+    @spaces[coord.row][coord.column].nil?
+  end
 end
