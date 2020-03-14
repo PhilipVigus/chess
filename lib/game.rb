@@ -11,10 +11,10 @@ class Game
   def setup_new_game
     piece_order = [Piece::ROOK, Piece::KNIGHT, Piece::BISHOP, Piece::QUEEN, Piece::KING, Piece::BISHOP, Piece::KNIGHT, Piece::ROOK]
     (0..7).each do |column|
-      board.spaces[0][column] = Piece.new(Piece::WHITE, piece_order[column])
-      board.spaces[1][column] = Piece.new(Piece::WHITE, Piece::PAWN)
-      board.spaces[6][column] = Piece.new(Piece::BLACK, Piece::PAWN)
-      board.spaces[7][column] = Piece.new(Piece::BLACK, piece_order[column])
+      board.add_piece(Piece.new(Piece::WHITE, piece_order[column]), [0, column])
+      board.add_piece(Piece.new(Piece::WHITE, Piece::PAWN), [1, column])
+      board.add_piece(Piece.new(Piece::BLACK, Piece::PAWN), [6, column])
+      board.add_piece(Piece.new(Piece::BLACK, piece_order[column]), [7, column])
     end
   end
 end

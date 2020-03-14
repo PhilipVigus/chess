@@ -9,15 +9,17 @@ describe Board do
 
   context 'creation' do
     it 'can be created with a size of 8 x 8' do
-      expect(board.spaces.size).to eq(8)
-      expect(board.spaces[0].size).to eq(8)
+      expect{ board.add_piece(piece, [8, 0]) }.to raise_error(IndexError)
+      expect{ board.add_piece(piece, [0, 8]) }.to raise_error(IndexError)
+      expect{ board.add_piece(piece, [-1, 0]) }.to raise_error(IndexError)
+      expect{ board.add_piece(piece, [0, -1]) }.to raise_error(IndexError)
     end
   end
 
   context 'add_piece' do
     it 'you can add a piece to a square on the board' do
       board.add_piece(piece, space0_0)
-      expect(board.spaces[0][0]).to eq(piece)
+      expect(board.piece_at(space0_0)).to eq(piece)
     end
   end
 
