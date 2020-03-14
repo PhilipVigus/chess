@@ -1,5 +1,3 @@
-require_relative('./space.rb')
-
 class Board
   attr_reader :spaces
 
@@ -8,14 +6,14 @@ class Board
   end
 
   def add_piece(piece, space)
-    @spaces[space.row][space.column] = piece
+    @spaces[space[0]][space[1]] = piece
   end
 
   def empty_space?(space)
-    @spaces[space.row][space.column].nil?
+    @spaces[space[0]][space[1]].nil?
   end
 
   def piece_at(space)
-    @spaces[space.row][space.column]
+    @spaces[space[0]][space[1]]
   end
 end

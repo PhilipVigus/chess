@@ -1,12 +1,11 @@
 require 'board'
 require_relative '../lib/pieces/piece.rb'
-require 'space'
 
 describe Board do
   let(:board) { Board.new }
   let(:piece) { Piece.new(Piece::BLACK, Piece::PAWN) }
-  let(:space0_0) { Space.new(0, 0) }
-  let(:space1_0) { Space.new(1, 0) }
+  let(:space0_0) { [0, 0] }
+  let(:space1_0) { [1, 0] }
 
   context 'creation' do
     it 'can be created with a size of 8 x 8' do
