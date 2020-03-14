@@ -22,6 +22,11 @@ describe Rook do
   end
 
   context 'movement' do
+    it 'raises an error when you try to move to the space you are already in' do
+      board.add_piece(white_rook, [4, 3])
+      expect{ white_rook.validate_move(board, [4, 3], [4, 3]) }.to raise_error(ArgumentError)
+    end
+
     it 'raises an error when moving to a space that is a different row and column' do
       board.add_piece(white_rook, [4, 3])
       expect{ white_rook.validate_move(board, [4, 3], [0, 7]) }.to raise_error(ArgumentError)

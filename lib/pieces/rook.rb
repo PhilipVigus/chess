@@ -7,7 +7,8 @@ class Rook < Piece
 
   def validate_move(board, start, finish)
     raise ArgumentError, "unable to move rook to space with different row and column" if start[0] != finish[0] && start[1] != finish[1]
-
+    raise ArgumentError, "unable to move rook to space it is already in" if start[0] == finish[0] && start[1] == finish[1]
+    
     if start[0] == finish[0]
       validate_row(board, start, finish)
     elsif start[1] == finish[1]
