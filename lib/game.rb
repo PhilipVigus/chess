@@ -1,5 +1,5 @@
 require_relative('./board.rb')
-require_relative('./piece.rb')
+require_relative('./pieces/piece.rb')
 
 class Game
   attr_reader :board

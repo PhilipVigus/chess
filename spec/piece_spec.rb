@@ -1,4 +1,4 @@
-require 'piece'
+require_relative '../lib/pieces/piece.rb'
 
 describe Piece do
   it "can be black" do

@@ -1,5 +1,5 @@
 require 'board'
-require 'piece'
+require_relative '../lib/pieces/piece.rb'
 require 'space'
 
 describe Board do
