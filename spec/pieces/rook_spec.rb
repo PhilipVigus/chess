@@ -26,10 +26,15 @@ describe Rook do
       board.add_piece(white_rook, [4, 3])
       expect{ white_rook.validate_move(board, [4, 3], [0, 7]) }.to raise_error(ArgumentError)
     end
-    
+
     it 'validate moves to the same row with no blocking pieces' do
       board.add_piece(white_rook, [0, 0])
       expect{ white_rook.validate_move(board, [0, 0], [0, 7]) }.not_to raise_error
+    end
+
+    it 'validate moves to the same column with no blocking pieces' do
+      board.add_piece(white_rook, [0, 0])
+      expect{ white_rook.validate_move(board, [0, 0], [7, 0]) }.not_to raise_error
     end
   end
 end
