@@ -57,5 +57,11 @@ describe Rook do
       expect{ white_rook.validate_move(board, [4, 3], [0, 3]) }.not_to raise_error
       expect{ white_rook.validate_move(board, [4, 3], [7, 3]) }.to raise_error(ArgumentError)
     end
+
+    it 'raises an error when attempting to move to an occupied space in the same column' do
+      board.add_piece(white_rook, [4, 3])
+      board.add_piece(black_rook, [6, 3])
+      expect{ white_rook.validate_move(board, [4, 3], [6, 3]) }.to raise_error(ArgumentError)
+    end
   end
 end
