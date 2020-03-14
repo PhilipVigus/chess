@@ -1,8 +1,10 @@
 require_relative '../../lib/pieces/rook.rb'
+require_relative '../../lib/board.rb'
 
 describe Rook do
   let(:white_rook) { Rook.new(Piece::WHITE) }
   let(:black_rook) { Rook.new(Piece::BLACK) }
+  let(:board) { Board.new }
 
   context 'creation' do
     it 'is a piece' do
@@ -16,6 +18,13 @@ describe Rook do
 
     it 'is a rook' do
       expect(black_rook.type).to be(Piece::ROOK)
+    end
+  end
+
+  context 'movement' do
+    it 'correctly validates moves to the same row with no blocking pieces' do
+      board.add_piece(white_rook, [0, 0])
+      expect{ white_rook.validate_move(board, [0, 7]) }.not_to raise_error
     end
   end
 end
