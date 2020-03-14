@@ -1,5 +1,4 @@
 require 'board'
-require_relative '../lib/pieces/piece.rb'
 
 describe Board do
   let(:board) { Board.new }
@@ -39,6 +38,18 @@ describe Board do
 
     it 'returns nil if the specified square is empty' do
       expect(board.piece_at(space0_0)).to eq(nil)
+    end
+  end
+
+  context 'moving pieces' do
+    context 'rooks' do
+      it 'you can move a rook from the first square to the last square on the same row if there are no blocking pieces' do
+        rook = Rook.new(Piece::WHITE)
+        board.add_piece(rook, [4, 0])
+        board.move_piece([4, 0], [4, 7])
+        expect(board.empty_space?([4, 0])).to eq(true)
+        expect(board.piece_at([4, 7])).to eq(rook)
+      end
     end
   end
 end

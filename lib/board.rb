@@ -20,6 +20,11 @@ class Board
     @spaces[space[0]][space[1]]
   end
 
+  def move_piece(start, finish)
+    @spaces[finish[0]][finish[1]] = @spaces[start[0]][start[1]]
+    @spaces[start[0]][start[1]] = nil
+  end
+
   private
 
   def space_out_of_bounds?(space)
