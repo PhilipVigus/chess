@@ -14,4 +14,8 @@ class Board
   def empty_space?(space)
     @spaces[space.row][space.column].nil?
   end
+
+  def piece_at(space)
+    @spaces[space.row][space.column]
+  end
 end
