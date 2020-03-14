@@ -5,6 +5,8 @@ require 'space'
 describe Board do
   let(:board) { Board.new }
   let(:piece) { Piece.new(Piece::BLACK, Piece::PAWN) }
+  let(:space0_0) { Space.new(0, 0) }
+  let(:space1_0) { Space.new(1, 0) }
 
   context 'creation' do
     it 'can be created with a size of 8 x 8' do
@@ -13,31 +15,29 @@ describe Board do
     end
   end
 
-  context 'adding pieces' do
+  context 'add_piece' do
     it 'you can add a piece to a square on the board' do
-      board.add_piece(piece, Space.new(0, 0))
-
+      board.add_piece(piece, space0_0)
       expect(board.spaces[0][0]).to eq(piece)
     end
   end
 
-  it 'tells you whether a space is empty' do
-    occupied_space = Space.new(0, 0)
-    empty_space = Space.new(1, 0)
-    board.add_piece(piece, occupied_space)
-
-    expect(board.empty_space?(occupied_space)).to eq(false)
-    expect(board.empty_space?(empty_space)).to eq(true)
+  context 'empty_space?' do
+    it 'tells you whether a space is empty' do
+      board.add_piece(piece, space0_0)
+      expect(board.empty_space?(space0_0)).to eq(false)
+      expect(board.empty_space?(space1_0)).to eq(true)
+    end
   end
 
-  it 'gives you the piece on a specified square' do
-    space = Space.new(0, 0)
-    board.add_piece(piece, space)
+  context 'piece_at' do
+    it 'gives you the piece on a specified square' do
+      board.add_piece(piece, space0_0)
+      expect(board.piece_at(space0_0)).to eq(piece)
+    end
 
-    expect(board.piece_at(space)).to eq(piece)
-  end
-
-  it 'returns nil if the specified square is empty' do
-    expect(board.piece_at(Space.new(0, 0))).to eq(nil)
+    it 'returns nil if the specified square is empty' do
+      expect(board.piece_at(space0_0)).to eq(nil)
+    end
   end
 end
