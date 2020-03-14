@@ -21,6 +21,8 @@ class Board
   end
 
   def move_piece(start, finish)
+    piece = @spaces[start[0]][start[1]]
+    piece.validate_move(self, start, finish)
     @spaces[finish[0]][finish[1]] = @spaces[start[0]][start[1]]
     @spaces[start[0]][start[1]] = nil
   end

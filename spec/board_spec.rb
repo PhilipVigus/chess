@@ -50,6 +50,14 @@ describe Board do
         expect(board.empty_space?([4, 0])).to eq(true)
         expect(board.piece_at([4, 7])).to eq(rook)
       end
+
+      it 'if you try to move a rook to somewhere on the same row past a blocking piece, it will raise an error' do
+        moving_rook = Rook.new(Piece::WHITE)
+        blocking_rook = Rook.new(Piece::WHITE)
+        board.add_piece(moving_rook, [4, 4])
+        board.add_piece(blocking_rook, [4, 5])
+        expect{ board.move_piece([4, 4], [4, 7]) }.to raise_error(ArgumentError)
+      end
     end
   end
 end
