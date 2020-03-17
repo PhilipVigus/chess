@@ -24,7 +24,7 @@ class Rook < Piece
     end_column = finish[1]
 
     (start_column..end_column).each do |column|
-      if !board.empty_space?([row, column])
+      if !board.empty_square?([row, column])
         raise ArgumentError, "unable to move rook as there is a blocking piece"
       end
     end
@@ -36,7 +36,7 @@ class Rook < Piece
     end_row = finish[0]
 
     (start_row..end_row).each do |row|
-      if !board.empty_space?([row, column])
+      if !board.empty_square?([row, column])
         raise ArgumentError, "unable to move rook as there is a blocking piece"
       end
     end

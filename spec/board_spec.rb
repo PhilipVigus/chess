@@ -22,11 +22,11 @@ describe Board do
     end
   end
 
-  context 'empty_space?' do
+  context 'empty_square?' do
     it 'tells you whether a space is empty' do
       board.add_piece(piece, space0_0)
-      expect(board.empty_space?(space0_0)).to eq(false)
-      expect(board.empty_space?(space1_0)).to eq(true)
+      expect(board.empty_square?(space0_0)).to eq(false)
+      expect(board.empty_square?(space1_0)).to eq(true)
     end
   end
 
@@ -47,7 +47,7 @@ describe Board do
         rook = Rook.new(Piece::WHITE)
         board.add_piece(rook, [4, 0])
         board.move_piece([4, 0], [4, 7])
-        expect(board.empty_space?([4, 0])).to eq(true)
+        expect(board.empty_square?([4, 0])).to eq(true)
         expect(board.piece_at([4, 7])).to eq(rook)
       end
 
